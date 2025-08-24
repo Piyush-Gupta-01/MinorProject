@@ -41,7 +41,7 @@ const LoginPage = () => {
     setIsLoading(true)
 
     // Temporary test login
-    if (data.email === "piyush@gmail.com" && data.password === "1234") {
+    if (data.email === "piyush@gmail.com" && data.password === "123456") {
       toast.success("Login successful (Test Mode)")
       router.push("/dashboard") // redirect to home (or dashboard)
       return
