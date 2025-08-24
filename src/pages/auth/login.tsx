@@ -25,16 +25,39 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<LoginFormData>()
 
+  // const onSubmit = async (data: LoginFormData) => {
+  //   try {
+  //     setIsLoading(true)
+  //     await login(data.email, data.password)
+  //   } catch (error: any) {
+  //     console.error('Login error:', error)
+  //   } finally {
+  //     setIsLoading(false)
+  //   }
+  // }
+
   const onSubmit = async (data: LoginFormData) => {
-    try {
-      setIsLoading(true)
-      await login(data.email, data.password)
-    } catch (error: any) {
-      console.error('Login error:', error)
-    } finally {
-      setIsLoading(false)
+  try {
+    setIsLoading(true)
+
+    // Temporary test login
+    if (data.email === "piyush@gmail.com" && data.password === "1234") {
+      toast.success("Login successful (Test Mode)")
+      router.push("/dashboard") // redirect to home (or dashboard)
+      return
     }
+
+    // Otherwise block login
+    toast.error("Invalid credentials (use test login)")
+    
+  } catch (error: any) {
+    console.error("Login error:", error)
+    toast.error("Something went wrong")
+  } finally {
+    setIsLoading(false)
   }
+}
+
 
   return (
     <>
